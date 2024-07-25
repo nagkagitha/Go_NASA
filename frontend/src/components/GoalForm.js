@@ -21,6 +21,8 @@ import SlideSnackbar from "./SlideSnackbar";
 import { useUserDataStore } from "../store/store";
 
 const priorities = ["Low", "Medium", "High"];
+const GoalType = ["Short term", "Long Term"]
+
 const tags = [
   "savings",
   "investment",
@@ -180,6 +182,22 @@ const GoalForm = () => {
             autoComplete="off"
             sx={TextFieldStyle}
           />
+          <TextField
+            select
+            label="Type of Goal"
+            name="Goal type"
+            value={goal.goalPriority}
+            onChange={handleChange}
+            required
+            sx={TextFieldSelectStyle}
+          >
+            {GoalType.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+
           <TextField
             label="Goal Description"
             name="goalDescription"
